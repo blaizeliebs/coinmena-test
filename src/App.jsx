@@ -1,5 +1,9 @@
 import styled from 'styled-components'
-import { Link } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -32,8 +36,20 @@ function App() {
         </Nav>
         </Container>
       </Navbar>
+      <Routes>
+        <Route path='/developers' element={<Devs/>} />
+        <Route path='/' element={<Repos/>} />
+      </Routes>
     </Container>
   );
+}
+
+function Devs() {
+  return <h2>Devs</h2>;
+}
+
+function Repos() {
+  return <h2>Repos</h2>;
 }
 
 export default App;
