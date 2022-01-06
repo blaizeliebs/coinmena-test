@@ -1,2 +1,0 @@
-# coinmena-test
-coinMENA test
