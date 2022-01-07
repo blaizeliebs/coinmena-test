@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components'
 import {
   Routes,
@@ -7,6 +8,9 @@ import {
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+
+import Devs from './routes/Devs'
+import Repos from './routes/Repos'
 
 const AppHeader = styled.header`
   background-color: #282c34;
@@ -18,6 +22,7 @@ const AppHeader = styled.header`
 `;
 
 function App() {
+  const [active, setActive] = useState('/');
   return (
     <Container fluid>
       <AppHeader>
@@ -26,12 +31,17 @@ function App() {
       </AppHeader>
       <Navbar bg="dark" variant="dark">
         <Container>
-        <Nav className="me-auto" variant="pills">
+        <Nav 
+          activeKey={active}
+          onSelect={(selectedKey) => setActive(selectedKey)} 
+          className="me-auto" 
+          variant="pills"
+        >
           <Nav.Item>
-            <Nav.Link as={Link} to="/">Trending Repos</Nav.Link>
+            <Nav.Link as={Link} to="/" eventKey="/">Trending Repos</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link as={Link} to="/developers">Trending Developers</Nav.Link>
+            <Nav.Link as={Link} to="/developers" eventKey="/developers">Trending Developers</Nav.Link>
           </Nav.Item>
         </Nav>
         </Container>
@@ -42,14 +52,6 @@ function App() {
       </Routes>
     </Container>
   );
-}
-
-function Devs() {
-  return <h2>Devs</h2>;
-}
-
-function Repos() {
-  return <h2>Repos</h2>;
 }
 
 export default App;
