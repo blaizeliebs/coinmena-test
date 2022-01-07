@@ -2,10 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from 'react-query'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { createGlobalStyle } from "styled-components"
+
+const queryClient = new QueryClient()
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -24,10 +27,12 @@ code {
 `
 
 ReactDOM.render(
-  <BrowserRouter>
+  <QueryClientProvider client={queryClient}>
+    <BrowserRouter>
     <GlobalStyle />
     <App />
-  </BrowserRouter>,
+    </BrowserRouter>
+  </QueryClientProvider>,
   document.getElementById('root')
 );
 
