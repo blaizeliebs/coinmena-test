@@ -1,22 +1,22 @@
-import { useQuery } from 'react-query'
+import { useQuery } from 'react-query';
+import Loading from '../components/Loading';
+import Title from '../components/Title';
 
 function Devs() {
+  const { isLoading, error, data } = useQuery('repoData', () =>
+    fetch('/developers').then((res) => res.json())
+  );
 
-    const { isLoading, error, data } = useQuery('repoData', () =>
-        fetch('/developers')
-        .then(res => res.json())
-    )
+  if (isLoading) return <Loading />;
 
-    if (isLoading) return 'Loading...'
+  if (error) return 'An error has occurred: ' + error.message;
 
-    if (error) return 'An error has occurred: ' + error.message
-
-    return (
-        <div>
-            <h1>Devs</h1>
-            {console.log('PLEASE WORK ', data)}
-        </div>
-    )
+  return (
+    <div>
+      <Title header='Trending Developers' />
+      {console.log('PLEASE WORK ', data)}
+    </div>
+  );
 }
 
 export default Devs;
