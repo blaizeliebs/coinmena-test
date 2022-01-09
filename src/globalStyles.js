@@ -22,6 +22,20 @@ body {
     vertical-align: text-bottom;
     fill: currentColor;
   }
+
+  .icon-sponsor, .icon-sponsoring {
+    transition: transform .15s cubic-bezier(0.2, 0, 0.13, 2);
+    transform: scale(1);
+  }
+
+  .color-fg-sponsors {
+    color: #db61a2 !important;
+  }
+
+  .anim-pulse-in {
+    animation-name: pulse-in;
+    animation-duration: .5s;
+  }
 `;
  
 export default GlobalStyle;

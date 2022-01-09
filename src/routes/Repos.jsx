@@ -43,7 +43,7 @@ function Repo() {
             <Card bg='dark' text='white'>
               <Card.Body>
                 <Row>
-                  <Col xs={10}>
+                  <Col xs={8}>
                     <Card.Title>
                       <IconTitle />{' '}
                       <a
@@ -56,19 +56,35 @@ function Repo() {
                     </Card.Title>
                     <Card.Text>{repo.description}</Card.Text>
                   </Col>
-                  <Col>
-                    <Button variant='outline-secondary' size='sm'>
-                      <IconHeart /> Sponsor
-                    </Button>
-                    <Button variant='outline-secondary' size='sm'>
-                      <IconStar /> Star
-                    </Button>
+                  <Col xs={{ span: 3, offset: 1 }}>
+                    <Row>
+                      {repo.starsSince > 100 && (
+                        <Col>
+                          <Button
+                            variant='outline-secondary'
+                            size='sm'
+                            href={repo.url}
+                            target='_blank'>
+                            <IconHeart /> Sponsor
+                          </Button>
+                        </Col>
+                      )}
+                      <Col>
+                        <Button
+                          variant='outline-secondary'
+                          size='sm'
+                          href={repo.url}
+                          target='_blank'>
+                          <IconStar /> Star
+                        </Button>
+                      </Col>
+                    </Row>
                   </Col>
                 </Row>
               </Card.Body>
               <Card.Footer>
                 <Row>
-                  <Col xs={10}>
+                  <Col xs={8}>
                     <small className='text-muted'>{repo.language}</small>{' '}
                     <Stars
                       totalStars={repo.totalStars}
@@ -82,7 +98,7 @@ function Repo() {
                     />
                     <BuiltBy builtBy={repo.builtBy} />
                   </Col>
-                  <Col>
+                  <Col xs={{ span: 3, offset: 1 }}>
                     <small className='text-muted ms-auto'>
                       <IconStar />
                       {repo.starsSince} stars today
