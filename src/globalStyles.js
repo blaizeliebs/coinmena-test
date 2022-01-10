@@ -18,7 +18,7 @@ body {
   
   .octicon {
     display: inline-block;
-    overflow: visible !important;
+    overflow: visible;
     vertical-align: text-bottom;
     fill: currentColor;
   }
@@ -29,12 +29,16 @@ body {
   }
 
   .color-fg-sponsors {
-    color: #db61a2 !important;
+    color: #db61a2;
   }
 
   .anim-pulse-in {
     animation-name: pulse-in;
     animation-duration: .5s;
+  }
+
+  .color-fg-severe {
+    color: #db6d28;
   }
 `;
  

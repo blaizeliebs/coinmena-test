@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const skeletonShimmer = keyframes`
@@ -40,4 +41,4 @@ const Loading = () => (
   </LoaderContent>
 );
 
-export default Loading;
+export default memo(Loading);

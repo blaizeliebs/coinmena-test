@@ -3,20 +3,23 @@ import { v4 as uuidv4 } from 'uuid';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import Helmet from 'react-helmet';
 import Loading from '../components/Loading';
 import Title from '../components/Title';
 import IconTitle from '../components/svgIcons/IconTitle';
 import IconStar from '../components/svgIcons/IconStar';
-import IconHeart from '../components/svgIcons/IconHeart';
 import Stars from '../components/repos/Stars';
 import Forks from '../components/repos/Forks';
 import BuiltBy from '../components/repos/BuiltBy';
+import Buttons from '../components/Buttons';
 
 function Repo() {
   const [post, setPost] = useState(null);
   const [error, setError] = useState(null);
 
+  /**
+   * Basic Use of a Javascript fetch in App.jsx I used the `react-query`
+   */
   useEffect(() => {
     fetch('/repositories', {
       mode: 'no-cors',
@@ -34,8 +37,16 @@ function Repo() {
 
   if (!post) return <Loading />;
 
+  /**
+   * In this page, I used `react-bootstrap` as a css library just to showcase the use
+   * I have experince with material-ui, semantic-ui, reactstrap as well as
+   * building out custom frameworks using tools like Storybook.js...
+   *
+   * In this page I used made use of the default javascript map function.
+   */
   return (
     <>
+      <Helmet title='coinMENA | Trending Repositories' />
       <Title header='Trending Repositories' />
       {post.map((repo) => {
         return (
@@ -58,26 +69,7 @@ function Repo() {
                   </Col>
                   <Col xs={{ span: 3, offset: 1 }}>
                     <Row>
-                      {repo.starsSince > 100 && (
-                        <Col>
-                          <Button
-                            variant='outline-secondary'
-                            size='sm'
-                            href={repo.url}
-                            target='_blank'>
-                            <IconHeart /> Sponsor
-                          </Button>
-                        </Col>
-                      )}
-                      <Col>
-                        <Button
-                          variant='outline-secondary'
-                          size='sm'
-                          href={repo.url}
-                          target='_blank'>
-                          <IconStar /> Star
-                        </Button>
-                      </Col>
+                      <Buttons data={repo} />
                     </Row>
                   </Col>
                 </Row>

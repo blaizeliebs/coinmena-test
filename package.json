@@ -41,6 +41,9 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^2.0.2",
+    "lodash": "^4.17.21",
+    "lorem-ipsum": "^2.0.4",
+    "react-helmet": "^6.1.0",
     "react-query": "^3.34.7",
     "styled-components": "^5.3.3",
     "stylelint": "^14.2.0",
